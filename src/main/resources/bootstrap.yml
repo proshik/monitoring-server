@@ -1,0 +1,16 @@
+server:
+  port: ${MONITORING_SERVER_POST}
+
+turbine:
+  stream:
+    port: ${MONITORING_TURBINE_POST}
+
+spring:
+  rabbitmq:
+    password: ${RABBITMQ_PASSWORD}
+    username: ${RABBITMQ_USERNAME}
+    host: ${RABBITMQ_HOST}
+
+logging:
+  level:
+    org.springframework: INFO

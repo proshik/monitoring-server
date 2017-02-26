@@ -1,0 +1,27 @@
+sudo: required
+
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+script: mvn clean install -B
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+
+after_success:
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - export MONITORING=proshik/monitoring-server
+
+# Docker
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t MONITORING:$COMMIT .
+  - docker tag MONITORING:$COMMIT MONITORING:$TAG
+  - docker push MONITORING
+
+notifications:
+  email:
+    - proxoraleksandrovich@gmail.com
