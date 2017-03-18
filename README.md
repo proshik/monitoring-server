@@ -11,8 +11,8 @@ The [Hystrix Dashboard](https://github.com/Netflix/Hystrix/wiki/Dashboard) allow
 ## Environment variables
 
 ```
-MONITORING_SERVER_POST - port of this service. Will be open Hystrix Dashboard.(example: 8787). Open http://localhost:8787/hystrix
-MONITORING_TURBINE_POST - port of turbine aggregate streams
+MONITORING_SERVER_PORT - port of this service. Will be open Hystrix Dashboard.(example: 8787). Open http://localhost:8787/hystrix
+MONITORING_TURBINE_PORT - port of turbine aggregate streams
 RABBITMQ_HOST - rabbit host
 RABBITMQ_USERNAME - rabbit username
 RABBITMQ_PASSWORD - rabbit password

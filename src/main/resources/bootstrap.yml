@@ -1,9 +1,9 @@
 server:
-  port: ${MONITORING_SERVER_POST}
+  port: ${MONITORING_SERVER_PORT}
 
 turbine:
   stream:
-    port: ${MONITORING_TURBINE_POST}
+    port: ${MONITORING_TURBINE_PORT}
 
 spring:
   rabbitmq:
