@@ -23,7 +23,3 @@ after_success:
   - docker build -t $MONITORING:$COMMIT .
   - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
   - docker push $MONITORING:$TAG
-
-notifications:
-  email:
-    - proxoraleksandrovich@gmail.com
