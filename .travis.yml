@@ -1,10 +1,12 @@
 sudo: required
 
-services:
-  - docker
-
 language: java
 jdk: oraclejdk8
+
+addons:
+  apt:
+    packages:
+      - docker-ce
 
 script: mvn clean install -B
 
@@ -17,7 +19,7 @@ after_success:
   - export MONITORING=proshik/monitoring-server
 
 # Docker
-  - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+  - docker login -u=$DOCKER_USER -p=$DOCKER_PASS
   - docker build -t $MONITORING:$COMMIT .
   - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
   - docker push $MONITORING:$TAG
