@@ -10,16 +10,13 @@ addons:
 
 script: mvn clean install -B
 
-env:
-  global:
-    - COMMIT=${TRAVIS_COMMIT::8}
-
 after_success:
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - export MONITORING=proshik/monitoring-server
+  - export COMMIT=${TRAVIS_COMMIT::8}
 
 # Docker
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker build -t $MONITORING:$COMMIT .
   - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS  
   - docker push $MONITORING:$TAG
