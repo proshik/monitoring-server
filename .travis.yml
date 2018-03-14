@@ -17,10 +17,10 @@ after_success:
   - export MONITORING=proshik/monitoring-server
 
 # Docker
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
   - docker build -t $MONITORING:$COMMIT .
   - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
-  - docker push $MONITORING
+  - docker push $MONITORING:$TAG
 
 notifications:
   email:
