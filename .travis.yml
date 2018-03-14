@@ -18,9 +18,9 @@ after_success:
 
 # Docker
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker build -t MONITORING:$COMMIT .
-  - docker tag MONITORING:$COMMIT MONITORING:$TAG
-  - docker push MONITORING
+  - docker build -t $MONITORING:$COMMIT .
+  - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
+  - docker push $MONITORING
 
 notifications:
   email:
