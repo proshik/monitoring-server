@@ -19,7 +19,7 @@ after_success:
   - export MONITORING=proshik/monitoring-server
 
 # Docker
-  - docker login -u=$DOCKER_USER -p=$DOCKER_PASS
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker build -t $MONITORING:$COMMIT .
   - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
   - docker push $MONITORING:$TAG
